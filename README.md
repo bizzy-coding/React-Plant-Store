@@ -10,9 +10,9 @@ Welcome to the React Plant Shop repository! This project is a dynamic web applic
 
 ## Technologies Used
 
-- **React**: Utilized for its efficient rendering and state management capabilities, perfect for handling the dynamic aspects of the shop.
+- **React**: Utilised for its efficient rendering and state management capabilities, perfect for handling the dynamic aspects of the shop.
 - **Vite**: Employs Vite as the build tool for fast development and builds.
-- **CSS**: For styling components.
+- **CSS**: For styling components. Only basic styles have been applied currently, will revisit with a design at a later date. 
 
 ## Future Enhancements
 
