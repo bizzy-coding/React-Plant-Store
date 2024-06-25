@@ -12,6 +12,9 @@ body {
   background: #eef4ee;
   padding: 1rem;
   border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .plant-card img {

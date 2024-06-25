@@ -2,6 +2,7 @@ import React from "react";
 
 function PlantCardDetails({
     plantName, 
+    plantPrice,
     plantType, 
     imgSrc, 
     index, 
@@ -10,7 +11,7 @@ function PlantCardDetails({
     difficulty
 }) {
 
-
+    console.log(`Plant Name: ${plantName}, Plant Price: ${plantPrice}`);
 
     const dynamicClass = `plant-card ${plantName} plant-${index}`
     return (
@@ -19,6 +20,7 @@ function PlantCardDetails({
         <div className={dynamicClass}>
         <h2>{plantName}</h2>
         <p>{plantType}</p>
+        <p>{plantPrice}</p>
         <div className="top-wrap">
             <img src={imgSrc} alt="" />
             <ul className="stats-wrap">
