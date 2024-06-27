@@ -1,7 +1,8 @@
 const plantData = [
   {
+    id: 1,
     plantName: "Fiddle Leaf Fig",
-    plantPrice: 19.99, // Ensure this property is present
+    plantPrice: 19.99, 
     stats: {
       height: 150, 
       waterFrequency: "med",
@@ -13,8 +14,9 @@ const plantData = [
     imageUrl: "https://images.pexels.com/photos/7084309/pexels-photo-7084309.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
+    id: 2,
     plantName: "Snake Plant",
-    plantPrice: 29.99, // Ensure this property is present
+    plantPrice: 29.99, 
     stats: {
       height: 90,
       waterFrequency: "low",
@@ -26,8 +28,9 @@ const plantData = [
     imageUrl: "https://images.pexels.com/photos/2123482/pexels-photo-2123482.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
+    id: 3,
     plantName: "Monstera Deliciosa",
-    plantPrice: 49.99, // Ensure this property is present
+    plantPrice: 49.99, 
     stats: {
       height: 200,
       waterFrequency: "med",
@@ -39,8 +42,9 @@ const plantData = [
     imageUrl: "https://images.pexels.com/photos/5858235/pexels-photo-5858235.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
+    id: 4,
     plantName: "Spider Plant",
-    plantPrice: 19.99, // Ensure this property is present
+    plantPrice: 19.99, 
     stats: {
       height: 30,
       waterFrequency: "med",
@@ -52,8 +56,9 @@ const plantData = [
     imageUrl: "https://images.pexels.com/photos/11363534/pexels-photo-11363534.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
   },
   {
+    id: 5,
     plantName: "Aloe Vera",
-    plantPrice: 9.99, // Ensure this property is present
+    plantPrice: 9.99, 
     stats: {
       height: 60,
       waterFrequency: "low",
@@ -65,8 +70,9 @@ const plantData = [
     imageUrl: "https://images.pexels.com/photos/1671650/pexels-photo-1671650.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
+    id: 6,
     plantName: "Rubber Plant",
-    plantPrice: 29.99, // Ensure this property is present
+    plantPrice: 29.99, 
     stats: {
       height: 120,
       waterFrequency: "med",
@@ -78,8 +84,9 @@ const plantData = [
     imageUrl: "https://images.pexels.com/photos/6845243/pexels-photo-6845243.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
+    id: 7,
     plantName: "Peace Lily",
-    plantPrice: 27.99, // Ensure this property is present
+    plantPrice: 27.99, 
     stats: {
       height: 60,
       waterFrequency: "med",
@@ -91,8 +98,9 @@ const plantData = [
     imageUrl: "https://images.pexels.com/photos/7643287/pexels-photo-7643287.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
+    id: 8,
     plantName: "Pothos",
-    plantPrice: 35.99, // Ensure this property is present
+    plantPrice: 35.99, 
     stats: {
       height: 100,
       waterFrequency: "low",

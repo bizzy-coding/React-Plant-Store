@@ -1,6 +1,6 @@
 import React from "react";
 
-function PlantCardDetails({
+function ProductCard({
     plantName, 
     plantPrice,
     plantType, 
@@ -11,7 +11,7 @@ function PlantCardDetails({
     difficulty
 }) {
 
-    console.log(`Plant Name: ${plantName}, Plant Price: ${plantPrice}`);
+    // console.log(`Plant Name: ${plantName}, Plant Price: ${plantPrice}`);
 
     const dynamicClass = `plant-card ${plantName} plant-${index}`
     return (
@@ -34,4 +34,4 @@ function PlantCardDetails({
     )
 }
 
-export default PlantCardDetails;
+export default ProductCard;
