@@ -2,11 +2,27 @@ import React, { useState } from "react";
 import ProductCard from "./ProductCard";
 import PlantBuyBtn from "../ui/PlantBuyButton";
 import SortControl from "../controls/SortControl";
+import FilterControl from "../controls/FilterControl";
 
 function ProductList({ plantData }) {
   const [sortConfig, setSortConfig] = useState("plantName-asc");
+  const [filterType, setFilterType] = useState("");
 
-  const sortedPlants = [...plantData].sort((a, b) => {
+  const handleSortChange = (sortOption) => {
+    setSortConfig(sortOption);
+  };
+
+  const handleFilterChange = type => {
+    setFilterType(type);
+  };
+
+  // Filter plants
+  const filteredPlants = plantData.filter(plant => {
+    return filterType ? plant.plantType === filterType : true;
+  });
+
+  // Sort plants
+  const sortedPlants = [...filteredPlants].sort((a, b) => {
     if (!sortConfig) return 0;
     const [key, order] = sortConfig.split("-");
     let aVal = a[key], bVal = b[key];
@@ -15,18 +31,20 @@ function ProductList({ plantData }) {
       aVal = +aVal;
       bVal = +bVal;
     }
+
     if (aVal < bVal) return order === "asc" ? -1 : 1;
     if (aVal > bVal) return order === "asc" ? 1 : -1;
     return 0;
   });
 
-  const handleSortChange = (sortOption) => {
-    setSortConfig(sortOption);
-  };
-
   return (
     <>
+    
+        <section className="controls">
+      <FilterControl onChange={handleFilterChange} />
       <SortControl onSort={handleSortChange} />
+      </section>
+      <section className="shop-list">
       {sortedPlants.map((plant) => (
         <div key={plant.id} className="plant-card">
           <ProductCard
@@ -40,7 +58,9 @@ function ProductList({ plantData }) {
           />
           <PlantBuyBtn plantName={plant.plantName} />
         </div>
+        
       ))}
+      </section>
     </>
   );
 }
