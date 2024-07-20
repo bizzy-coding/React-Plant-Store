@@ -1,6 +1,9 @@
+
 import React from "react";
+import PlantBuyBtn from "../ui/PlantBuyButton";
 
 function ProductCard({
+    petName,
     plantName, 
     plantPrice,
     plantType, 
@@ -17,17 +20,23 @@ function ProductCard({
     return (
 
         <>
+         <img src={imgSrc} alt="" />
         <div className={dynamicClass}>
-        <h2>{plantName}</h2>
-        <p>{plantType}</p>
+            <div className="product-card-details">
+       
+
+        <h2>{petName}</h2>
+        <p>{plantName}</p>
         <p>{plantPrice}</p>
         <div className="top-wrap">
-            <img src={imgSrc} alt="" />
+            
             <ul className="stats-wrap">
                 <li>height: {height}cm</li>
                 <li>Origin: {country}</li>
                 <li>Difficulty: {difficulty}</li>
             </ul>
+        </div>
+        <PlantBuyBtn plantName={plantName} />
         </div>
         </div>
         </>

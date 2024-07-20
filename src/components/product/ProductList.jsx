@@ -1,24 +1,32 @@
 import React, { useState } from "react";
 import ProductCard from "./ProductCard";
-import PlantBuyBtn from "../ui/PlantBuyButton";
+
 import SortControl from "../controls/SortControl";
 import FilterControl from "../controls/FilterControl";
 
 function ProductList({ plantData }) {
   const [sortConfig, setSortConfig] = useState("plantName-asc");
-  const [filterType, setFilterType] = useState("");
+  const [filterConfig, setFilterConfig] = useState({
+    light: []
+  });
 
   const handleSortChange = (sortOption) => {
     setSortConfig(sortOption);
   };
 
-  const handleFilterChange = type => {
-    setFilterType(type);
+  const handleFilterChange = (filterType, checked) => {
+    setFilterConfig((prev) => {
+      const newLight = checked
+        ? [...prev.light, filterType]
+        : prev.light.filter((type) => type !== filterType);
+      return { ...prev, light: newLight };
+    });
   };
 
   // Filter plants
-  const filteredPlants = plantData.filter(plant => {
-    return filterType ? plant.plantType === filterType : true;
+  const filteredPlants = plantData.filter((plant) => {
+    if (filterConfig.light.length === 0) return true;
+    return filterConfig.light.includes(plant.stats.sunlightRequirements);
   });
 
   // Sort plants
@@ -39,27 +47,25 @@ function ProductList({ plantData }) {
 
   return (
     <>
-    
-        <section className="controls">
-      <FilterControl onChange={handleFilterChange} />
-      <SortControl onSort={handleSortChange} />
+      <section className="controls">
+        <FilterControl onChange={handleFilterChange} />
+        <SortControl onSort={handleSortChange} />
       </section>
       <section className="shop-list">
-      {sortedPlants.map((plant) => (
-        <div key={plant.id} className="plant-card">
-          <ProductCard
-            plantName={plant.plantName}
-            plantPrice={plant.plantPrice}
-            plantType={plant.plantType}
-            imgSrc={plant.imageUrl}
-            height={plant.stats.height}
-            country={plant.stats.nativeCountry}
-            difficulty={plant.stats.difficultyOfCare}
-          />
-          <PlantBuyBtn plantName={plant.plantName} />
-        </div>
-        
-      ))}
+        {sortedPlants.map((plant) => (
+          <div key={plant.id} className="product-card">
+            <ProductCard
+              petName={plant.petName}
+              plantName={plant.plantName}
+              plantPrice={plant.plantPrice}
+              plantType={plant.plantType}
+              imgSrc={plant.imageUrl}
+              height={plant.stats.height}
+              country={plant.stats.nativeCountry}
+              difficulty={plant.stats.careLevel}
+            />
+          </div>
+        ))}
       </section>
     </>
   );
