@@ -7,6 +7,7 @@ function FilterControl({ onChange }) {
   };
 
   return (
+    <div className="filter-container">
     <div className="type-filter">
       <h3>Filter by Light</h3>
       <div>
@@ -27,6 +28,7 @@ function FilterControl({ onChange }) {
           Happy in shade
         </label>
       </div>
+    </div>
     </div>
   );
 }

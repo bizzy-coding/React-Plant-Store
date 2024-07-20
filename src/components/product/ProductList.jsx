@@ -7,7 +7,7 @@ import FilterControl from "../controls/FilterControl";
 function ProductList({ plantData }) {
   const [sortConfig, setSortConfig] = useState("plantName-asc");
   const [filterConfig, setFilterConfig] = useState({
-    light: []
+    light: [],
   });
 
   const handleSortChange = (sortOption) => {
@@ -16,9 +16,7 @@ function ProductList({ plantData }) {
 
   const handleFilterChange = (filterType, checked) => {
     setFilterConfig((prev) => {
-      const newLight = checked
-        ? [...prev.light, filterType]
-        : prev.light.filter((type) => type !== filterType);
+      const newLight = checked ? [...prev.light, filterType] : prev.light.filter((type) => type !== filterType);
       return { ...prev, light: newLight };
     });
   };
@@ -33,7 +31,8 @@ function ProductList({ plantData }) {
   const sortedPlants = [...filteredPlants].sort((a, b) => {
     if (!sortConfig) return 0;
     const [key, order] = sortConfig.split("-");
-    let aVal = a[key], bVal = b[key];
+    let aVal = a[key],
+      bVal = b[key];
 
     if (key === "plantPrice") {
       aVal = +aVal;
@@ -47,26 +46,39 @@ function ProductList({ plantData }) {
 
   return (
     <>
-      <section className="controls">
-        <FilterControl onChange={handleFilterChange} />
-        <SortControl onSort={handleSortChange} />
-      </section>
-      <section className="shop-list">
-        {sortedPlants.map((plant) => (
-          <div key={plant.id} className="product-card">
-            <ProductCard
-              petName={plant.petName}
-              plantName={plant.plantName}
-              plantPrice={plant.plantPrice}
-              plantType={plant.plantType}
-              imgSrc={plant.imageUrl}
-              height={plant.stats.height}
-              country={plant.stats.nativeCountry}
-              difficulty={plant.stats.careLevel}
-            />
+      <header className="header">
+        <h2>Plants</h2>
+        <p>Look at our beautiful plants</p>
+      </header> 
+
+      <main className="shop-container">
+        <aside className="filter">
+          <FilterControl onChange={handleFilterChange} />
+        </aside>
+        <div className="shop-wrap">
+          <div className="controls">
+          <button className="filter-mobile">Filter</button>
+            <SortControl onSort={handleSortChange} />
+            
           </div>
-        ))}
-      </section>
+          <div className="shop-list">
+            {sortedPlants.map((plant) => (
+              <div key={plant.id} className="product-card">
+                <ProductCard
+                  petName={plant.petName}
+                  plantName={plant.plantName}
+                  plantPrice={plant.plantPrice}
+                  plantType={plant.plantType}
+                  imgSrc={plant.imageUrl}
+                  height={plant.stats.height}
+                  country={plant.stats.nativeCountry}
+                  difficulty={plant.stats.careLevel}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </main>
     </>
   );
 }
