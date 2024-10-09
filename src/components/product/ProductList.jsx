@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ProductCard from "./ProductCard";
-
 import SortControl from "../controls/SortControl";
 import FilterControl from "../controls/FilterControl";
 
@@ -8,6 +7,7 @@ function ProductList({ plantData }) {
   const [sortConfig, setSortConfig] = useState("plantName-asc");
   const [filterConfig, setFilterConfig] = useState({
     light: [],
+    difficulty: [], 
   });
 
   const handleSortChange = (sortOption) => {
@@ -16,15 +16,22 @@ function ProductList({ plantData }) {
 
   const handleFilterChange = (filterType, checked) => {
     setFilterConfig((prev) => {
-      const newLight = checked ? [...prev.light, filterType] : prev.light.filter((type) => type !== filterType);
-      return { ...prev, light: newLight };
+      const updatedFilter = (filterArray, type) =>
+        checked ? [...filterArray, type] : filterArray.filter((item) => item !== type);
+
+      if (["direct sunlight", "light and shade", "shade"].includes(filterType)) {
+        return { ...prev, light: updatedFilter(prev.light, filterType) };
+      } else {
+        return { ...prev, difficulty: updatedFilter(prev.difficulty, filterType) };
+      }
     });
   };
 
-  // Filter plants
+  // Filter plants by light and difficulty
   const filteredPlants = plantData.filter((plant) => {
-    if (filterConfig.light.length === 0) return true;
-    return filterConfig.light.includes(plant.stats.sunlightRequirements);
+    const lightMatch = filterConfig.light.length === 0 || filterConfig.light.includes(plant.stats.sunlightRequirements);
+    const difficultyMatch = filterConfig.difficulty.length === 0 || filterConfig.difficulty.includes(plant.stats.careLevel);
+    return lightMatch && difficultyMatch;
   });
 
   // Sort plants
@@ -57,9 +64,8 @@ function ProductList({ plantData }) {
         </aside>
         <div className="shop-wrap">
           <div className="controls">
-          <button className="filter-mobile">Filter</button>
+            <button className="filter-mobile">Filter</button>
             <SortControl onSort={handleSortChange} />
-            
           </div>
           <div className="shop-list">
             {sortedPlants.map((plant) => (
