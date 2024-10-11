@@ -3,12 +3,15 @@ import React, { useState, useEffect, useRef } from 'react';
 function FilterControl({ onChange }) {
   const [showLightDropdown, setShowLightDropdown] = useState(false);
   const [showDifficultyDropdown, setShowDifficultyDropdown] = useState(false);
+  const [showPlantTypeDropdown, setShowPlantTypeDropdown] = useState(false); // New state for plant type dropdown
 
   const [lightFilter, setLightFilter] = useState([]);
   const [difficultyFilter, setDifficultyFilter] = useState([]);
+  const [plantTypeFilter, setPlantTypeFilter] = useState([]); // New state for plant type filter
 
   const lightDropdownRef = useRef(null);
   const difficultyDropdownRef = useRef(null);
+  const plantTypeDropdownRef = useRef(null); // New ref for plant type dropdown
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -19,6 +22,9 @@ function FilterControl({ onChange }) {
       if (difficultyDropdownRef.current && !difficultyDropdownRef.current.contains(event.target)) {
         setShowDifficultyDropdown(false);
       }
+      if (plantTypeDropdownRef.current && !plantTypeDropdownRef.current.contains(event.target)) {
+        setShowPlantTypeDropdown(false);
+      }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
@@ -26,44 +32,55 @@ function FilterControl({ onChange }) {
     };
   }, []);
 
-// Handle checkbox change for light filter
-const handleLightChange = (e) => {
-  const { name, checked } = e.target;
-  let updatedLightFilter = [...lightFilter];
+  // Handle checkbox change for light filter
+  const handleLightChange = (e) => {
+    const { name, checked } = e.target;
+    let updatedLightFilter = [...lightFilter];
 
-  if (checked) {
-    updatedLightFilter.push(name);
-  } else {
-    updatedLightFilter = updatedLightFilter.filter((item) => item !== name);
-  }
+    if (checked) {
+      updatedLightFilter.push(name);
+    } else {
+      updatedLightFilter = updatedLightFilter.filter((item) => item !== name);
+    }
 
-  setLightFilter(updatedLightFilter);
-  // Trigger the onChange with the individual filter type and checked status
-  onChange(name, checked);
-};
+    setLightFilter(updatedLightFilter);
+    onChange(name, checked);
+  };
 
-// Handle checkbox change for difficulty filter
-const handleDifficultyChange = (e) => {
-  const { name, checked } = e.target;
-  let updatedDifficultyFilter = [...difficultyFilter];
+  // Handle checkbox change for difficulty filter
+  const handleDifficultyChange = (e) => {
+    const { name, checked } = e.target;
+    let updatedDifficultyFilter = [...difficultyFilter];
 
-  if (checked) {
-    updatedDifficultyFilter.push(name);
-  } else {
-    updatedDifficultyFilter = updatedDifficultyFilter.filter((item) => item !== name);
-  }
+    if (checked) {
+      updatedDifficultyFilter.push(name);
+    } else {
+      updatedDifficultyFilter = updatedDifficultyFilter.filter((item) => item !== name);
+    }
 
-  setDifficultyFilter(updatedDifficultyFilter);
-  // Trigger the onChange with the individual filter type and checked status
-  onChange(name, checked);
-};
+    setDifficultyFilter(updatedDifficultyFilter);
+    onChange(name, checked);
+  };
 
+  // Handle checkbox change for plant type filter
+  const handlePlantTypeChange = (e) => {
+    const { name, checked } = e.target;
+    let updatedPlantTypeFilter = [...plantTypeFilter];
+
+    if (checked) {
+      updatedPlantTypeFilter.push(name);
+    } else {
+      updatedPlantTypeFilter = updatedPlantTypeFilter.filter((item) => item !== name);
+    }
+
+    setPlantTypeFilter(updatedPlantTypeFilter);
+    onChange(name, checked);
+  };
 
   return (
     <div className="filter-container">
       {/* Light Filter Dropdown */}
       <div className="type-filter" ref={lightDropdownRef}>
-        
         <div onClick={() => setShowLightDropdown(!showLightDropdown)} className="dropdown-header">
           {lightFilter.length > 0 ? lightFilter.join(', ') : 'Sunlight ⌄'}
         </div>
@@ -102,7 +119,6 @@ const handleDifficultyChange = (e) => {
 
       {/* Difficulty Filter Dropdown */}
       <div className="difficulty-filter" ref={difficultyDropdownRef}>
-        
         <div onClick={() => setShowDifficultyDropdown(!showDifficultyDropdown)} className="dropdown-header">
           {difficultyFilter.length > 0 ? difficultyFilter.join(', ') : 'Care Level ⌄'}
         </div>
@@ -138,8 +154,47 @@ const handleDifficultyChange = (e) => {
           </div>
         )}
       </div>
+
+      {/* Plant Type Filter Dropdown */}
+      <div className="plant-type-filter" ref={plantTypeDropdownRef}>
+        <div onClick={() => setShowPlantTypeDropdown(!showPlantTypeDropdown)} className="dropdown-header">
+          {plantTypeFilter.length > 0 ? plantTypeFilter.join(', ') : 'Plant Type ⌄'}
+        </div>
+        {showPlantTypeDropdown && (
+          <div className="dropdown-menu">
+            <label>
+              <input
+                type="checkbox"
+                name="Tropical"
+                checked={plantTypeFilter.includes('Tropical')}
+                onChange={handlePlantTypeChange}
+              />
+              Tropical
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="Succulent"
+                checked={plantTypeFilter.includes('Succulent')}
+                onChange={handlePlantTypeChange}
+              />
+              Succulent
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="Climber/Vine"
+                checked={plantTypeFilter.includes('Climber/Vine')}
+                onChange={handlePlantTypeChange}
+              />
+              Climber/Vine
+            </label>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
 
 export default FilterControl;
+

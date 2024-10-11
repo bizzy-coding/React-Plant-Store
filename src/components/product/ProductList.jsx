@@ -22,26 +22,21 @@ function ProductList({ plantData }) {
 
   const handleFilterChange = (filterType, checked) => {
     setFilterConfig((prev) => {
-      const updatedFilter = (filterArray, type) =>
+      const updatedFilter = (filterArray = [], type) => 
         checked ? [...filterArray, type] : filterArray.filter((item) => item !== type);
   
       if (["direct sunlight", "light and shade", "shade"].includes(filterType)) {
         return { ...prev, light: updatedFilter(prev.light, filterType) };
-  
-      
       } else if (["low", "med", "high"].includes(filterType)) {
         return { ...prev, difficulty: updatedFilter(prev.difficulty, filterType) };
-  
-   
+      } else if (["Tropical", "Succulent", "Climber/Vine"].includes(filterType)) {
+        return { ...prev, plantType: updatedFilter(prev.plantType, filterType) }; 
       } else if (["lowHumidity", "medHumidity", "highHumidity"].includes(filterType)) {
         return { ...prev, humidityRequirements: updatedFilter(prev.humidityRequirements, filterType) };
-  
       } else if (["Africa", "America", "Asia"].includes(filterType)) {
         return { ...prev, nativeCountry: updatedFilter(prev.nativeCountry, filterType) };
-  
       } else if (["slow", "medium", "fast"].includes(filterType)) {
         return { ...prev, growthRate: updatedFilter(prev.growthRate, filterType) };
-  
       } else if (filterType === "petFriendly") {
         return { ...prev, petFriendly: checked };
       }
@@ -49,25 +44,20 @@ function ProductList({ plantData }) {
       return prev;
     });
   };
-
+  
   // Filtering logic
   const filteredPlants = plantData.filter((plant) => {
     const lightMatch = (filterConfig.light?.length || 0) === 0 || filterConfig.light.includes(plant.stats.sunlightRequirements);
-  
     const difficultyMatch = (filterConfig.difficulty?.length || 0) === 0 || filterConfig.difficulty.includes(plant.stats.careLevel);
-  
-    const nativeCountryMatch = (filterConfig.nativeCountry?.length || 0) === 0 || 
-      plant.stats.nativeCountry.some(country => filterConfig.nativeCountry.includes(country)); 
-  
-    const humidityRequirementsMatch = (filterConfig.humidityRequirements?.length || 0) === 0 || 
-      filterConfig.humidityRequirements.includes(plant.stats.humidityRequirements);
-  
+    const nativeCountryMatch = (filterConfig.nativeCountry?.length || 0) === 0 || plant.stats.nativeCountry.some(country => filterConfig.nativeCountry.includes(country));
+    const humidityRequirementsMatch = (filterConfig.humidityRequirements?.length || 0) === 0 || filterConfig.humidityRequirements.includes(plant.stats.humidityRequirements);
     const growthRateMatch = (filterConfig.growthRate?.length || 0) === 0 || filterConfig.growthRate.includes(plant.stats.growthRate);
-  
     const petFriendlyMatch = filterConfig.petFriendly === null || plant.stats.petFriendly === filterConfig.petFriendly;
+    const plantTypeMatch = (filterConfig.plantType?.length || 0) === 0 || plant.stats.plantType.some(type => filterConfig.plantType.includes(type)); // New plant type match
   
-    return lightMatch && difficultyMatch && nativeCountryMatch && humidityRequirementsMatch && growthRateMatch && petFriendlyMatch;
+    return lightMatch && difficultyMatch && nativeCountryMatch && humidityRequirementsMatch && growthRateMatch && petFriendlyMatch && plantTypeMatch;
   });
+  
 
   // Sorting logic
 const sortedPlants = [...filteredPlants].sort((a, b) => {
