@@ -26,46 +26,43 @@ function FilterControl({ onChange }) {
     };
   }, []);
 
-// Handle checkbox change for light filter
-const handleLightChange = (e) => {
-  const { name, checked } = e.target;
-  let updatedLightFilter = [...lightFilter];
+  // Handle checkbox change for light filter
+  const handleLightChange = (e) => {
+    const { name, checked } = e.target;
+    let updatedLightFilter = [...lightFilter];
 
-  if (checked) {
-    updatedLightFilter.push(name);
-  } else {
-    updatedLightFilter = updatedLightFilter.filter((item) => item !== name);
-  }
+    if (checked) {
+      updatedLightFilter.push(name);
+    } else {
+      updatedLightFilter = updatedLightFilter.filter((item) => item !== name);
+    }
 
-  setLightFilter(updatedLightFilter);
-  // Trigger the onChange with the individual filter type and checked status
-  onChange(name, checked);
-};
+    setLightFilter(updatedLightFilter);
+    onChange({ light: updatedLightFilter, difficulty: difficultyFilter });
+  };
 
-// Handle checkbox change for difficulty filter
-const handleDifficultyChange = (e) => {
-  const { name, checked } = e.target;
-  let updatedDifficultyFilter = [...difficultyFilter];
+  // Handle checkbox change for difficulty filter
+  const handleDifficultyChange = (e) => {
+    const { name, checked } = e.target;
+    let updatedDifficultyFilter = [...difficultyFilter];
 
-  if (checked) {
-    updatedDifficultyFilter.push(name);
-  } else {
-    updatedDifficultyFilter = updatedDifficultyFilter.filter((item) => item !== name);
-  }
+    if (checked) {
+      updatedDifficultyFilter.push(name);
+    } else {
+      updatedDifficultyFilter = updatedDifficultyFilter.filter((item) => item !== name);
+    }
 
-  setDifficultyFilter(updatedDifficultyFilter);
-  // Trigger the onChange with the individual filter type and checked status
-  onChange(name, checked);
-};
-
+    setDifficultyFilter(updatedDifficultyFilter);
+    onChange({ light: lightFilter, difficulty: updatedDifficultyFilter });
+  };
 
   return (
     <div className="filter-container">
       {/* Light Filter Dropdown */}
       <div className="type-filter" ref={lightDropdownRef}>
-        
+        <h3>Filter by Light</h3>
         <div onClick={() => setShowLightDropdown(!showLightDropdown)} className="dropdown-header">
-          {lightFilter.length > 0 ? lightFilter.join(', ') : 'Sunlight ⌄'}
+          {lightFilter.length > 0 ? lightFilter.join(', ') : 'Select Light Filter'}
         </div>
         {showLightDropdown && (
           <div className="dropdown-menu">
@@ -102,9 +99,9 @@ const handleDifficultyChange = (e) => {
 
       {/* Difficulty Filter Dropdown */}
       <div className="difficulty-filter" ref={difficultyDropdownRef}>
-        
+        <h3>Filter by Difficulty</h3>
         <div onClick={() => setShowDifficultyDropdown(!showDifficultyDropdown)} className="dropdown-header">
-          {difficultyFilter.length > 0 ? difficultyFilter.join(', ') : 'Care Level ⌄'}
+          {difficultyFilter.length > 0 ? difficultyFilter.join(', ') : 'Select Difficulty Filter'}
         </div>
         {showDifficultyDropdown && (
           <div className="dropdown-menu">

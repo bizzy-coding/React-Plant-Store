@@ -93,7 +93,11 @@ const sortedPlants = [...filteredPlants].sort((a, b) => {
       </header> 
 
       <main className="shop-container">
-        <aside className="filter">
+     
+        <div className="shop-wrap">
+          <div className="controls">
+            <SortControl onSort={handleSortChange} />
+            <div className="filter">
           <FilterControl onChange={handleFilterChange} />
           <button className="more-filters-btn" onClick={() => setShowAdvancedFilters(true)}>
             More Filters
@@ -105,11 +109,8 @@ const sortedPlants = [...filteredPlants].sort((a, b) => {
             <AdvancedFilterControl onChange={handleFilterChange} />
           </div>
         )}
-        </aside>
+        </div>
 
-        <div className="shop-wrap">
-          <div className="controls">
-            <SortControl onSort={handleSortChange} />
           </div>
           <div className="shop-list">
             {sortedPlants.map((plant) => (
