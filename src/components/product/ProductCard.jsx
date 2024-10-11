@@ -1,11 +1,10 @@
-
 import React from "react";
 import PlantBuyBtn from "../ui/PlantBuyButton";
 
 function ProductCard({
     petName,
     plantName, 
-    plantPrice,
+    plantPrice,  // Keep this prop
     plantType, 
     imgSrc, 
     index, 
@@ -14,33 +13,28 @@ function ProductCard({
     difficulty
 }) {
 
-    // console.log(`Plant Name: ${plantName}, Plant Price: ${plantPrice}`);
+    const dynamicClass = `plant-card ${plantName} plant-${index}`;
 
-    const dynamicClass = `plant-card ${plantName} plant-${index}`
     return (
-
         <>
-         <img src={imgSrc} alt="" />
-        <div className={dynamicClass}>
-            <div className="product-card-details">
-       
-
-        <h2>{petName}</h2>
-        <p>{plantName}</p>
-        <p>{plantPrice}</p>
-        <div className="top-wrap">
-            
-            <ul className="stats-wrap">
-                <li>height: {height}cm</li>
-                <li>Origin: {country}</li>
-                <li>Difficulty: {difficulty}</li>
-            </ul>
-        </div>
-        <PlantBuyBtn plantName={plantName} />
-        </div>
-        </div>
+            <img src={imgSrc} alt={plantName} />
+            <div className={dynamicClass}>
+                <div className="product-card-details">
+                    <h2>{petName}</h2>
+                    <p>{plantName}</p>
+                    <p>{`£${plantPrice}`}</p> 
+                    <div className="top-wrap">
+                        <ul className="stats-wrap">
+                            <li>Height: {height}cm</li>
+                            <li>Origin: {country}</li>
+                            <li>Difficulty: {difficulty}</li>
+                        </ul>
+                    </div>
+                    <PlantBuyBtn plantName={plantName} />
+                </div>
+            </div>
         </>
-    )
+    );
 }
 
 export default ProductCard;

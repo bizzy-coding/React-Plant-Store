@@ -8,7 +8,7 @@ const plantData = [
     stats: {
       height: 160,
       waterFrequency: "med",
-      nativeCountry: "Western Africa",
+      nativeCountry: ["Africa"],
       careLevel: "high",
       petFriendly: false,
       plantType: "Tropical",
@@ -18,7 +18,7 @@ const plantData = [
       growthRate: "medium",
       maxHeight: 250,
       temperatureRange: "18-24°C",
-      humidityRequirements: "high",
+      humidityRequirements: "highHumidity",
       commonIssues: "leaf drop, root rot",
       careTips: "Wipe leaves regularly to remove dust and help with photosynthesis",
       origin: "Rainforests of Western Africa"
@@ -52,7 +52,7 @@ const plantData = [
     stats: {
       height: 90,
       waterFrequency: "low",
-      nativeCountry: "West Africa",
+      nativeCountry: ["Africa"],
       careLevel: "low",
       petFriendly: true,
       plantType: "Succulent",
@@ -62,7 +62,7 @@ const plantData = [
       growthRate: "slow",
       maxHeight: 120,
       temperatureRange: "15-24°C",
-      humidityRequirements: "low",
+      humidityRequirements: "lowHumidity",
       commonIssues: "overwatering",
       careTips: "Allow soil to dry out completely between waterings",
       origin: "West Africa"
@@ -96,7 +96,7 @@ const plantData = [
     stats: {
       height: 200,
       waterFrequency: "med",
-      nativeCountry: "Central America",
+      nativeCountry: ["America"],
       careLevel: "med",
       petFriendly: false,
       plantType: "Tropical",
@@ -106,7 +106,7 @@ const plantData = [
       growthRate: "fast",
       maxHeight: 300,
       temperatureRange: "18-27°C",
-      humidityRequirements: "high",
+      humidityRequirements: "highHumidity",
       commonIssues: "yellowing leaves",
       careTips: "Mist leaves regularly to maintain humidity",
       origin: "Central America"
@@ -140,7 +140,7 @@ const plantData = [
     stats: {
       height: 30,
       waterFrequency: "med",
-      nativeCountry: "Southern Africa",
+      nativeCountry: ["Africa"],
       careLevel: "low",
       petFriendly: true,
       plantType: "Tropical",
@@ -150,7 +150,7 @@ const plantData = [
       growthRate: "fast",
       maxHeight: 60,
       temperatureRange: "15-25°C",
-      humidityRequirements: "medium",
+      humidityRequirements: "medHumidity",
       commonIssues: "brown tips",
       careTips: "Trim brown tips and propagate easily by planting the offshoots",
       origin: "Southern Africa"
@@ -184,7 +184,7 @@ const plantData = [
       stats: {
         height: 60,
         waterFrequency: "low",
-        nativeCountry: "Arabian Peninsula",
+        nativeCountry: ["Arabian Peninsula"],
         careLevel: "low",
         petFriendly: false,
         plantType: "Succulent",
@@ -194,7 +194,7 @@ const plantData = [
         growthRate: "slow",
         maxHeight: 60,
         temperatureRange: "18-24°C",
-        humidityRequirements: "low",
+        humidityRequirements: "lowHumidity",
         commonIssues: "root rot from overwatering",
         careTips: "Use a pot with drainage holes to prevent water logging",
         origin: "Arabian Peninsula"
@@ -228,7 +228,7 @@ const plantData = [
       stats: {
         height: 120,
         waterFrequency: "med",
-        nativeCountry: "South Asia",
+        nativeCountry: ["Asia"],
         careLevel: "med",
         petFriendly: false,
         plantType: "Tropical",
@@ -238,7 +238,7 @@ const plantData = [
         growthRate: "medium",
         maxHeight: 300,
         temperatureRange: "16-24°C",
-        humidityRequirements: "medium",
+        humidityRequirements: "medHumidity",
         commonIssues: "leaf drop due to overwatering",
         careTips: "Wipe leaves to remove dust and help with photosynthesis",
         origin: "South Asia"
@@ -272,7 +272,7 @@ const plantData = [
       stats: {
         height: 60,
         waterFrequency: "med",
-        nativeCountry: "Americas and Southeast Asia",
+        nativeCountry: ["America", "Asia"],
         careLevel: "low",
         petFriendly: false,
         plantType: "Tropical",
@@ -282,7 +282,7 @@ const plantData = [
         growthRate: "medium",
         maxHeight: 90,
         temperatureRange: "18-24°C",
-        humidityRequirements: "high",
+        humidityRequirements: "highHumidity",
         commonIssues: "browning leaf tips",
         careTips: "Mist leaves to maintain humidity",
         origin: "Americas and Southeast Asia"
@@ -316,7 +316,7 @@ const plantData = [
       stats: {
         height: 100,
         waterFrequency: "low",
-        nativeCountry: "French Polynesia",
+        nativeCountry: ["France"],
         careLevel: "low",
         petFriendly: false,
         plantType: "Tropical",
@@ -326,7 +326,7 @@ const plantData = [
         growthRate: "fast",
         maxHeight: 200,
         temperatureRange: "18-24°C",
-        humidityRequirements: "medium",
+        humidityRequirements: "medHumidity",
         commonIssues: "yellowing leaves",
         careTips: "Prune regularly to encourage bushier growth",
         origin: "French Polynesia"
