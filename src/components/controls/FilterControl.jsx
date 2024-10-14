@@ -3,15 +3,21 @@ import React, { useState, useEffect, useRef } from 'react';
 function FilterControl({ onChange }) {
   const [showLightDropdown, setShowLightDropdown] = useState(false);
   const [showDifficultyDropdown, setShowDifficultyDropdown] = useState(false);
-  const [showPlantTypeDropdown, setShowPlantTypeDropdown] = useState(false); // New state for plant type dropdown
+  const [showPlantTypeDropdown, setShowPlantTypeDropdown] = useState(false); 
+  const [showPlantSizeDropdown, setShowPlantSizeDropdown] = useState(false); 
+  // New state for plant type dropdown
 
   const [lightFilter, setLightFilter] = useState([]);
   const [difficultyFilter, setDifficultyFilter] = useState([]);
-  const [plantTypeFilter, setPlantTypeFilter] = useState([]); // New state for plant type filter
+  const [plantTypeFilter, setPlantTypeFilter] = useState([]); 
+  const [plantSizeFilter, setPlantSizeFilter] = useState([]); 
+  // New state for plant type filter
 
   const lightDropdownRef = useRef(null);
   const difficultyDropdownRef = useRef(null);
-  const plantTypeDropdownRef = useRef(null); // New ref for plant type dropdown
+  const plantTypeDropdownRef = useRef(null); 
+  const plantSizeDropdownRef = useRef(null); 
+  // New ref for plant type dropdown
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -25,6 +31,9 @@ function FilterControl({ onChange }) {
       if (plantTypeDropdownRef.current && !plantTypeDropdownRef.current.contains(event.target)) {
         setShowPlantTypeDropdown(false);
       }
+    if (plantSizeDropdownRef.current && !plantSizeDropdownRef.current.contains(event.target)) {
+      setShowPlantSizeDropdown(false);
+    }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
@@ -77,12 +86,106 @@ function FilterControl({ onChange }) {
     onChange(name, checked);
   };
 
+  // Handle checkbox change for plant type filter
+  const handlePlantSizeChange = (e) => {
+    const { name, checked } = e.target;
+    console.log("Size filter change:", name, checked); 
+    let updatedPlantSizeFilter = [...plantSizeFilter];
+  
+    if (checked) {
+      updatedPlantSizeFilter.push(name);  
+    } else {
+      updatedPlantSizeFilter = updatedPlantSizeFilter.filter((item) => item !== name);
+    }
+  
+    setPlantSizeFilter(updatedPlantSizeFilter);
+    onChange(name, checked);  
+  };
+
   return (
     <div className="filter-container">
+      
+      {/* Plant Size Filter Dropdown */}
+      <div className="plant-size-filter" ref={plantSizeDropdownRef}>
+        <div onClick={() => setShowPlantSizeDropdown(!showPlantSizeDropdown)} className="dropdown-header">
+          {'Size ⌄'}
+        </div>
+        {showPlantSizeDropdown && (
+          <div className="dropdown-menu">
+            <label>
+              <input
+                type="checkbox"
+                name="sizeSmall"
+                checked={plantSizeFilter.includes('sizeSmall')}
+                onChange={handlePlantSizeChange}
+              />
+              Small
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="sizeMedium"
+                checked={plantSizeFilter.includes('sizeMedium')}
+                onChange={handlePlantSizeChange}
+              />
+              Medium
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="sizeLarge"
+                checked={plantSizeFilter.includes('sizeLarge')}
+                onChange={handlePlantSizeChange}
+              />
+              Large
+            </label>
+          </div>
+        )}
+      </div>
+
+
+      {/* Plant Type Filter Dropdown */}
+      <div className="plant-type-filter" ref={plantTypeDropdownRef}>
+        <div onClick={() => setShowPlantTypeDropdown(!showPlantTypeDropdown)} className="dropdown-header">
+          {'Type ⌄'}
+        </div>
+        {showPlantTypeDropdown && (
+          <div className="dropdown-menu">
+            <label>
+              <input
+                type="checkbox"
+                name="Tropical"
+                checked={plantTypeFilter.includes('Tropical')}
+                onChange={handlePlantTypeChange}
+              />
+              Tropical
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="Succulent"
+                checked={plantTypeFilter.includes('Succulent')}
+                onChange={handlePlantTypeChange}
+              />
+              Succulent
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="Climber/Vine"
+                checked={plantTypeFilter.includes('Climber/Vine')}
+                onChange={handlePlantTypeChange}
+              />
+              Climber/Vine
+            </label>
+          </div>
+        )}
+      </div>
+
       {/* Light Filter Dropdown */}
       <div className="type-filter" ref={lightDropdownRef}>
         <div onClick={() => setShowLightDropdown(!showLightDropdown)} className="dropdown-header">
-          {lightFilter.length > 0 ? lightFilter.join(', ') : 'Sunlight ⌄'}
+          { 'light ⌄'}
         </div>
         {showLightDropdown && (
           <div className="dropdown-menu">
@@ -120,7 +223,7 @@ function FilterControl({ onChange }) {
       {/* Difficulty Filter Dropdown */}
       <div className="difficulty-filter" ref={difficultyDropdownRef}>
         <div onClick={() => setShowDifficultyDropdown(!showDifficultyDropdown)} className="dropdown-header">
-          {difficultyFilter.length > 0 ? difficultyFilter.join(', ') : 'Care Level ⌄'}
+          {'Care Level ⌄'}
         </div>
         {showDifficultyDropdown && (
           <div className="dropdown-menu">
@@ -155,43 +258,7 @@ function FilterControl({ onChange }) {
         )}
       </div>
 
-      {/* Plant Type Filter Dropdown */}
-      <div className="plant-type-filter" ref={plantTypeDropdownRef}>
-        <div onClick={() => setShowPlantTypeDropdown(!showPlantTypeDropdown)} className="dropdown-header">
-          {plantTypeFilter.length > 0 ? plantTypeFilter.join(', ') : 'Plant Type ⌄'}
-        </div>
-        {showPlantTypeDropdown && (
-          <div className="dropdown-menu">
-            <label>
-              <input
-                type="checkbox"
-                name="Tropical"
-                checked={plantTypeFilter.includes('Tropical')}
-                onChange={handlePlantTypeChange}
-              />
-              Tropical
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                name="Succulent"
-                checked={plantTypeFilter.includes('Succulent')}
-                onChange={handlePlantTypeChange}
-              />
-              Succulent
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                name="Climber/Vine"
-                checked={plantTypeFilter.includes('Climber/Vine')}
-                onChange={handlePlantTypeChange}
-              />
-              Climber/Vine
-            </label>
-          </div>
-        )}
-      </div>
+      
     </div>
   );
 }

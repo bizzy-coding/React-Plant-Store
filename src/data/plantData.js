@@ -7,6 +7,7 @@ const plantData = [
     imageUrl: "https://images.pexels.com/photos/7084309/pexels-photo-7084309.jpeg?auto=compress&cs=tinysrgb&w=800",
     stats: {
       height: 160,
+      plantSize: "sizeLarge",
       waterFrequency: "med",
       nativeCountry: ["Africa"],
       careLevel: "high",
@@ -51,6 +52,7 @@ const plantData = [
     imageUrl: "https://images.pexels.com/photos/2123482/pexels-photo-2123482.jpeg?auto=compress&cs=tinysrgb&w=800",
     stats: {
       height: 90,
+      plantSize: "sizeMedium",
       waterFrequency: "low",
       nativeCountry: ["Africa"],
       careLevel: "low",
@@ -95,6 +97,7 @@ const plantData = [
     imageUrl: "https://images.pexels.com/photos/5858235/pexels-photo-5858235.jpeg?auto=compress&cs=tinysrgb&w=800",
     stats: {
       height: 200,
+      plantSize: "sizeLarge",
       waterFrequency: "med",
       nativeCountry: ["America"],
       careLevel: "med",
@@ -138,7 +141,8 @@ const plantData = [
     scientificName: "Chlorophytum comosum",
     imageUrl: "https://images.pexels.com/photos/11363534/pexels-photo-11363534.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     stats: {
-      height: 30,
+      height: 60,
+      plantSize: "sizeMedium",
       waterFrequency: "med",
       nativeCountry: ["Africa"],
       careLevel: "low",
@@ -182,12 +186,13 @@ const plantData = [
       scientificName: "Aloe barbadensis miller",
       imageUrl: "https://images.pexels.com/photos/1671650/pexels-photo-1671650.jpeg?auto=compress&cs=tinysrgb&w=800",
       stats: {
-        height: 60,
+        height: 30,
+        plantSize: "sizeSmall",
         waterFrequency: "low",
         nativeCountry: ["Arabian Peninsula"],
         careLevel: "low",
         petFriendly: false,
-        plantType: ["Tropical"],
+        plantType: ["Succulent"],
         sunlightRequirements: "direct sunlight",
         soilType: "well-draining",
         fertilizerRequirements: "every 2-3 months",
@@ -227,6 +232,7 @@ const plantData = [
       imageUrl: "https://images.pexels.com/photos/6845243/pexels-photo-6845243.jpeg?auto=compress&cs=tinysrgb&w=800",
       stats: {
         height: 120,
+        plantSize: "sizeLarge",
         waterFrequency: "med",
         nativeCountry: ["Asia"],
         careLevel: "med",
@@ -271,6 +277,7 @@ const plantData = [
       imageUrl: "https://images.pexels.com/photos/7643287/pexels-photo-7643287.jpeg?auto=compress&cs=tinysrgb&w=800",
       stats: {
         height: 60,
+        plantSize: "sizeMedium",
         waterFrequency: "med",
         nativeCountry: ["America", "Asia"],
         careLevel: "low",
@@ -315,6 +322,7 @@ const plantData = [
       imageUrl: "https://images.pexels.com/photos/7663986/pexels-photo-7663986.jpeg?auto=compress&cs=tinysrgb&w=800",
       stats: {
         height: 100,
+        plantSize: "sizeLarge",
         waterFrequency: "low",
         nativeCountry: ["France"],
         careLevel: "low",
