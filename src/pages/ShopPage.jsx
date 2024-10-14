@@ -11,7 +11,7 @@ function ShopPage() {
     <>
     <Navigation></Navigation>
     <div className="container">
-      <h1>React Plant Store</h1>
+      {/* <h1>React Plant Store</h1> */}
       <div className="plant-container">
         <ProductList plantData={plantData} />
       </div>

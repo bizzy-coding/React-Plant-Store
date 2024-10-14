@@ -29,6 +29,40 @@ button {
   transition: border-color 0.25s;
 }
 
+/* ---- Navigation ---- */
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #C8A2C8;
+}
+
+.nav-icon-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  img.burger-menu {
+    display: none;
+}
+}
+@media (max-width: 768px) {
+.desktop img.icon-cart,
+.desktop img.icon-wish,
+.desktop img.icon-account  ,
+.desktop img.icon-search {
+    display: none;
+}
+
+.nav-right.nav-icon-wrap.desktop {
+  display: none;
+}
+}
 
 .shop-list {
   display: grid;
