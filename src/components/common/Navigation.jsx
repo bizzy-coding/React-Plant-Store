@@ -16,6 +16,7 @@ function Navigation() {
     return(
         <>
         <nav className="navigation">
+            <div className="container">
             <div className="nav-left nav-icon-wrap desktop">
                 <img className="icon-cart" src={cartIcon} alt="Cart Icon" />
                 <img className="icon-wish" src={wishIcon} alt="Wishlist Icon" />
@@ -32,6 +33,7 @@ function Navigation() {
             <div className="nav-right nav-icon-wrap desktop">
                 <img className="icon-account" src={accountIcon} alt="Account Icon" />
                 <img className="icon-search" src={searchIcon} alt="Search Icon" />
+            </div>
             </div>
         </nav>
 
