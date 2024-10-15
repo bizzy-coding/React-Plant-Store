@@ -9,7 +9,7 @@ export const getPlantData = async (query) => {
     const response = await axios.get(`${BASE_URL}/species-list`, {
       params: {
         key: API_KEY,
-        indoor: true, // Filter for indoor plants (houseplants)
+        indoor: 1, // Filter for indoor plants (houseplants)
         q: query || '', // Include search query if provided
       },
     });
