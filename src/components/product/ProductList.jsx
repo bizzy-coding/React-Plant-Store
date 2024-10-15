@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { getPlantData } from "../../api/plantApi";
 import ProductCard from "./ProductCard"; 
+import { faker } from '@faker-js/faker';
 
 const ProductList = () => {
   const [plants, setPlants] = useState([]);
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
+
+  // Generate random product details using faker
+  const getRandomName = () => {
+    return faker.person.firstName(); // Return a random name
+  };
+
+  const getRandomLocation = () => {
+    return faker.location.country(); // Return a random country
+  };
 
   useEffect(() => {
     const fetchPlants = async () => {
@@ -31,8 +41,8 @@ const ProductList = () => {
   return (
     <div>
       <header className="header">
-        <h2>Plants</h2>
-        <p>Look at our beautiful plants</p>
+        <h1>Plant Delivery</h1>
+        <p>Browse our beautiful range of plants available for next day delivery</p>
       </header>
       <main className="shop-container">
      
@@ -45,15 +55,14 @@ const ProductList = () => {
             plants.map((plant, index) => (
               <ProductCard
                 key={plant.id}
-                petName={plant.common_name} // Map API field to petName
-                plantName={plant.scientific_name} // Map API field to plantName
+                petName={getRandomName()} // Generate and pass random name as a prop to act as the cute name
+                plantName={plant.common_name}  // Map API field to plantName
                 plantPrice={Math.floor(Math.random() * 41 + 9.99)} // Generate random price between 9.99 and 49.99
-                plantType={plant.cycle} // Assuming cycle is similar to plantType
                 imgSrc={plant.default_image ? plant.default_image.thumbnail : "default.jpg"} // Use default image if available
                 index={index}
-                height={plant.height || "N/A"} // Height if available
-                country={plant.origin || "Unknown"} // Assuming API returns country of origin
-                difficulty={plant.watering || "Average"} // Assuming watering is similar to difficulty
+                plantScienceName={plant.scientific_name} // Map API field to plantName
+                height={Math.floor(Math.random() * 100 + 10)} // Height if available
+                country={getRandomLocation()} // Generate and pass random name as a prop
                 sunlight={plant.sunlight}
                 watering={plant.watering}
                 cycle={plant.cycle || "Unknown"}

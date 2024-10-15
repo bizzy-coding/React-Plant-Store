@@ -6,12 +6,11 @@ function ProductCard({
   petName,
   plantName,
   plantPrice,
-  plantType,
   imgSrc, 
   index,
+  plantScienceName,
   height,
   country,
-  difficulty,
   sunlight,
   watering,
   cycle,
@@ -42,16 +41,16 @@ function ProductCard({
         <img src={imageSrc} alt={plantName} onError={handleImageError} />
         <div className="product-card-details">
           <div className="product-heading-wrap">
-            <h2>{petName}</h2>
+            <h3>{petName}</h3>
             <p>{`£${plantPrice}`}</p>
           </div>
-          <p>{plantName}</p>
+          <p className="plant-name">{plantName}</p>
           <div className="product-cta-wrap">
             <p
               className="learn-more"
               onClick={toggleStats} // Toggle stats on click
             >
-              learn more
+              Learn more
             </p>
             <PlantBuyBtn plantName={plantName} />
           </div>
@@ -59,12 +58,12 @@ function ProductCard({
           {isStatsOpen && (
             <div className="product-stats-wrap">
               <ul className="stats-wrap">
+              <li>Scientific Name: {plantScienceName}</li>
                 <li>Height: {height}cm</li>
                 <li>Origin: {country}</li>
-                <li>Difficulty: {difficulty}</li>
                 <li>Sunlight: {Array.isArray(sunlight) ? sunlight.join(', ') : "N/A"}</li> 
                 <li>Watering: {watering}</li>
-                <li>Cycle: {cycle}</li>
+                <li>Plant Type: {cycle}</li>
               </ul>
             </div>
           )}

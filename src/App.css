@@ -3,8 +3,17 @@ body {
   margin: 0;
 }
 
-h1, h2, p {
+h1, h2  {
   margin: 0;
+  font-family: 'Kirang Haerang', sans-serif;
+  font-size: 3rem;
+
+}
+
+h3, p {
+  margin: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
 }
 
 ul {
@@ -27,6 +36,7 @@ button {
   font-family: inherit;
   cursor: pointer;
   transition: border-color 0.25s;
+  
 }
 
 /* ---- Navigation ---- */
@@ -94,13 +104,27 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-transform: capitalize;
 }
+
+p.plant-name {
+  text-transform: capitalize;
+}
+
+.product-stats-wrap {
+  position: relative;
+}
+
 
 ul.stats-wrap {
-
   text-align: left;
-  
+  position: absolute;
+  background: white;
+  padding: 1rem;
+  left: -1rem;
+  width: calc(100% + 0rem);
 }
+
 
 .product-cta-wrap {
   display: flex;
