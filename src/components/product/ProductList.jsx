@@ -58,7 +58,7 @@ const ProductList = () => {
                 petName={getRandomName()} // Generate and pass random name as a prop to act as the cute name
                 plantName={plant.common_name}  // Map API field to plantName
                 plantPrice={Math.floor(Math.random() * 41 + 9.99)} // Generate random price between 9.99 and 49.99
-                imgSrc={plant.default_image ? plant.default_image.thumbnail : "default.jpg"} // Use default image if available
+                imgSrc={plant.default_image.original_url} // Use default image if available
                 index={index}
                 plantScienceName={plant.scientific_name} // Map API field to plantName
                 height={Math.floor(Math.random() * 100 + 10)} // Height if available
