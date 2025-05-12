@@ -1,6 +1,6 @@
 # React Plant Shop
 
-Welcome to the React Plant Shop repository! This project combines my love for houseplants with a passion for refining UX/UI and React development skills. The aim is to create a fully interactive plant store, showcasing information about my own houseplants in a referenceable format, while also simulating the experience of an eCommerce store.
+Welcome to the React Plant Shop repository by Laura Bizzle! This project combines my love for houseplants with a passion for refining UX/UI and React development skills. The aim is to create a fully interactive plant store, showcasing information about my own houseplants in a referenceable format, while also simulating the experience of an eCommerce store.
 
 ## Features
 
@@ -27,3 +27,6 @@ Welcome to the React Plant Shop repository! This project combines my love for ho
 ## Contributing
 
 Contributions to the React Plant Shop are welcome! If you have suggestions or improvements, feel free to fork the repository and submit a pull request, or open an issue with your ideas.
+
+
+Created with 💚 by Laura Bizzle – [LinkedIn](https://www.linkedin.com/in/laura-bizzle/) | [GitHub](https://github.com/bizzy-coding)
