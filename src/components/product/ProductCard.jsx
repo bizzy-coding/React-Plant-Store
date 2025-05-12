@@ -57,7 +57,9 @@ function ProductCard({
 
           {isStatsOpen && (
             <div className="product-stats-wrap">
+            
               <ul className="stats-wrap">
+              <button className="close-stats" onClick={toggleStats}>x</button>
               <li>Scientific Name: {plantScienceName}</li>
                 <li>Height: {height}cm</li>
                 <li>Origin: {country}</li>
